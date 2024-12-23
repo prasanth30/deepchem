@@ -27,7 +27,7 @@ featurization methods which we will review on this page.
 
 
 Molecule Featurizers
----------------------
+--------------------
 
 These featurizers work with datasets of molecules.
 
@@ -61,7 +61,7 @@ WeaveFeaturizer
   :inherited-members:
 
 MolGanFeaturizer
-**********************
+****************
 
 .. autoclass:: deepchem.feat.MolGanFeaturizer
   :members:
@@ -75,14 +75,14 @@ MolGraphConvFeaturizer
   :inherited-members:
 
 PagtnMolGraphFeaturizer
-**********************
+***********************
 
 .. autoclass:: deepchem.feat.PagtnMolGraphFeaturizer
   :members:
   :inherited-members:
 
 DMPNNFeaturizer
-**********************
+***************
 
 .. autoclass:: deepchem.feat.DMPNNFeaturizer
   :members:
@@ -95,13 +95,13 @@ GroverFeaturizer
   :members:
 
 RDKitConformerFeaturizer
-*************************
+************************
 
 .. autoclass:: deepchem.feat.RDKitConformerFeaturizer
   :members:
 
 MXMNetFeaturizer
-**********************
+****************
 
 .. autoclass:: deepchem.feat.MXMNetFeaturizer
   :members:
@@ -160,7 +160,7 @@ MACCSKeysFingerprint
   :members:
 
 MATFeaturizer
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
 
 .. autoclass:: deepchem.feat.MATFeaturizer
   :members:
@@ -250,7 +250,7 @@ OneHotFeaturizer
   :inherited-members:
 
 SparseMatrixOneHotFeaturizer
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. autoclass:: deepchem.feat.SparseMatrixOneHotFeaturizer
   :members:
@@ -264,14 +264,14 @@ RawFeaturizer
   :inherited-members:
 
 SNAPFeaturizer
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^
 
 .. autoclass:: deepchem.feat.SNAPFeaturizer
   :members:
   :inherited-members:
 
 Molecular Complex Featurizers
--------------------------------
+-----------------------------
 
 These featurizers work with three dimensional molecular complexes.
 
@@ -291,7 +291,7 @@ AtomicConvFeaturizer
 
 
 Inorganic Crystal Featurizers
-------------------------------
+-----------------------------
 
 These featurizers work with datasets of inorganic crystals.
 
@@ -350,6 +350,53 @@ LCNNFeaturizer
   :inherited-members:
 
 
+Biological Sequence Featurizers
+-------------------------------
+
+These featurizers work with biological sequences.
+
+SAMFeaturizer
+^^^^^^^^^^^^^
+
+.. autoclass:: deepchem.feat.SAMFeaturizer
+  :members:
+  :inherited-members: 
+
+BAMFeaturizer
+^^^^^^^^^^^^^
+
+.. autoclass:: deepchem.feat.BAMFeaturizer
+  :members:
+  :inherited-members:
+
+CRAMFeaturizer
+^^^^^^^^^^^^^^
+
+.. autoclass:: deepchem.feat.CRAMFeaturizer
+  :members:
+  :inherited-members:
+
+
+DeepVariant Featurizers
+-----------------------
+
+These featurizers are used in DeepVariant
+
+RealignerFeaturizer
+^^^^^^^^^^^^^^^^^^^
+
+.. autoclass:: deepchem.feat.RealignerFeaturizer
+  :members:
+  :inherited-members:
+
+PileupFeaturizer
+^^^^^^^^^^^^^^^^
+
+.. autoclass:: deepchem.feat.PileupFeaturizer
+  :members:
+  :inherited-members:
+
+
 Molecule Tokenizers
 -------------------
 
@@ -387,7 +434,7 @@ a Byte-Piece Encoder, which can be found `here.`_
 
 .. _`(transformers.PreTrainedTokenizer)`: https://huggingface.co/transformers/main_classes/tokenizer.html#transformers.PreTrainedTokenizer
 .. _`HuggingFace tokenizers docs`: https://huggingface.co/transformers/main_classes/tokenizer.html
-.. _`here.`: https://github.com/deepchem/deepchem/blob/master/examples/tutorials/22_Transfer_Learning_With_HuggingFace_tox21.ipynb
+.. _`here.`: https://github.com/deepchem/deepchem/blob/master/examples/tutorials/Transfer_Learning_With_ChemBERTa_Transformers.ipynb
 
 SmilesTokenizer
 ^^^^^^^^^^^^^^^
@@ -519,7 +566,7 @@ DummyFeaturizer
   :inherited-members:
 
 
-Base Featurizers (for develop)
+Base Featurizers (for developers)
 ------------------------------
 
 Featurizer
@@ -569,13 +616,23 @@ This featurizer can take a pair of PDB or SDF files which contain ligand molecul
 .. autoclass:: deepchem.feat.ComplexFeaturizer
   :members:
 
+PolymerFeaturizer
+^^^^^^^^^^^^^^^^^
+
+If you're creating a new featurizer that featurizes polymer material,
+you will want to inherit from the abstract :code:`PolymerFeaturizer` base class.
+This featurizer can take a single string representation or datapoints of the same.
+
+.. autoclass:: deepchem.feat.PolymerFeaturizer
+  :members:
+
 VocabularyBuilder
 ^^^^^^^^^^^^^^^^^
 
 If you're creating a vocabulary builder for generating vocabulary from a corpus or input data,
 the vocabulary builder must inhere from :code:`VocabularyBuilder` base class.
 
-.. autoclass:: deepchem.feat.vocabulary_builders.VocabularyBuilder
+.. autoclass:: deepchem.feat.vocabulary_builders.vocabulary_builder.VocabularyBuilder
   :members:
 
 HuggingFaceVocabularyBuilder

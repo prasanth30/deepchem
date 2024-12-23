@@ -2,6 +2,9 @@
 Making it easy to import in classes.
 """
 # flake8: noqa
+import logging
+
+logger = logging.getLogger(__name__)
 
 # base classes for featurizers
 from deepchem.feat.base_classes import Featurizer
@@ -11,10 +14,12 @@ from deepchem.feat.base_classes import MaterialCompositionFeaturizer
 from deepchem.feat.base_classes import ComplexFeaturizer
 from deepchem.feat.base_classes import UserDefinedFeaturizer
 from deepchem.feat.base_classes import DummyFeaturizer
+from deepchem.feat.base_classes import PolymerFeaturizer
 
 from deepchem.feat.graph_features import ConvMolFeaturizer
 from deepchem.feat.graph_features import WeaveFeaturizer
 from deepchem.feat.graph_data import GraphData
+from deepchem.feat.graph_data import WeightedDirectedGraphData
 from deepchem.feat.binding_pocket_features import BindingPocketFeaturizer
 
 # molecule featurizers
@@ -71,6 +76,20 @@ from deepchem.feat.atomic_conformation import AtomicConformation
 from deepchem.feat.atomic_conformation import AtomicConformationFeaturizer
 
 from deepchem.feat.huggingface_featurizer import HuggingFaceFeaturizer
+
+# biological sequence featurizers
+try:
+    from deepchem.feat.bio_seq_featurizer import SAMFeaturizer
+    from deepchem.feat.bio_seq_featurizer import BAMFeaturizer
+    from deepchem.feat.bio_seq_featurizer import CRAMFeaturizer
+except ImportError as e:
+    logger.warning(
+        f'Skipped loading biological sequence featurizer, missing a dependency. {e}'
+    )
+
+from deepchem.feat.deepvariant_featurizer import RealignerFeaturizer
+from deepchem.feat.deepvariant_pileup_featurizer import PileupFeaturizer
+
 # tokenizers
 try:
     from deepchem.feat.smiles_tokenizer import SmilesTokenizer
